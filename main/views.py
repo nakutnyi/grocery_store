@@ -1,12 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-from main.models import Products
+from main.models import Product
 
 
 # Create your views here.
 def products_list(request):
-    products_list = Products.objects.all()
+    products_list = Product.objects.all()
     template = loader.get_template("main/products_list.html")
     context = {
         "products_list": products_list
