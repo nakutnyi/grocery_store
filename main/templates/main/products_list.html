@@ -6,6 +6,10 @@
 </head>
 <body>
   <h2>Products list</h2>
-  <p>{{template_variable_name}}</p>
+  <ul>
+      {% for product in products_list %}
+        <li>{{ product }}</li>
+      {% endfor %}
+  </ul>
 </body>
 </html>

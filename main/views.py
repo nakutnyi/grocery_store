@@ -8,14 +8,13 @@ def products_list(request):
     products_list = [
         "apple",
         "potato",
-        "cranberries",
         "tomato",
         "banana",
+        "bread",
     ]
-    demo_string = "test"
-    template = loader.get_template("main/templates/main/products_list.html")
+    template = loader.get_template("main/products_list.html")
     context = {
-        "template_variable_name": demo_string,
+        "products_list": products_list
     }
 
     return HttpResponse(template.render(context, request))
