@@ -1,8 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from main.models import Product
 
+
+def root(request):
+    return redirect("products_list")
 
 # Create your views here.
 def products_list(request):
