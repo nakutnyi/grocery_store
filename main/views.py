@@ -10,7 +10,7 @@ def root(request):
 # Create your views here.
 def products_list(request):
     products_list = Product.objects.all()
-    template = loader.get_template("main/products_list.html")
+    template = loader.get_template("products_list.html")
     context = {
         "products_list": products_list
     }
