@@ -21,3 +21,11 @@ def product_page(request):
 
 def cart(request):
     return HttpResponse("<h2>Shopping cart</h2>")
+
+
+def login(request):
+    return HttpResponse("<h2>Login page</h2>")
+
+
+def user_settings(request):
+    return HttpResponse("<h2>User settings</h2>")
