@@ -1,13 +1,23 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.template import loader
+from django.urls import reverse_lazy
+
 from main.models import Product
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import CreateView
+
+
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"
 
 
 def root(request):
     return redirect("products_list")
 
-# Create your views here.
+
 def products_list(request):
     products_list = Product.objects.all()
     template = loader.get_template("products_list.html")

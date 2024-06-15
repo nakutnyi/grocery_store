@@ -19,6 +19,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from main import views
+from django.contrib.auth.urls import urlpatterns as accounts_urlpatterns
+
+
+accounts_urlpatterns.append(
+    path("signup/", views.SignUpView.as_view(), name="signup")
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,5 +33,5 @@ urlpatterns = [
     path("product_page/", views.product_page, name="product_page"),
     path("cart/", views.cart, name="cart"),
     path("user_settings/", views.user_settings, name="user_settings"),
-    path("accounts/", include("django.contrib.auth.urls")),  # new
+    path("accounts/", include(accounts_urlpatterns)),
 ]
