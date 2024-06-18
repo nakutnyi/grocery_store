@@ -4,22 +4,36 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" type='text/css' href="{% static 'css/stylesheet.css' %}">
 </head>
 
 <body>
   <main>
-    {% if user.is_authenticated %}
-      <p>Hi {{ user.username }}!</p>
-      <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Log Out</button>
-      </form>
-    {% else %}
-      <p>Hello, Guest!</p>
-      <a href="{% url 'login' %}">Log In</a>
-    {% endif %}
-    {% block content %}
-    {% endblock %}
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+          <li>
+            <p>Hi {{ user.username }}!</p>
+          </li>
+          <li>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Log Out</button>
+            </form>
+          </li>
+        {% else %}
+          <li>
+            <p>Hello, Guest!</p>
+          </li>
+          <li>
+            <a href="{% url 'login' %}">Log In</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+      {% block content %}
+      {% endblock %}
   </main>
 </body>
 
